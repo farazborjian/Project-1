@@ -2,7 +2,7 @@ let board = document.querySelector('.board');
 let player = document.querySelector('.player');
 let playAgain = document.querySelector('.playAgain');
 let restart = document.querySelector('.restart');
-let box = 0;
+let box = 0; //check if the board is filled
 let winningArray = [
 	[0, 1, 2, 3],
 	[41, 40, 39, 38],
@@ -74,4 +74,25 @@ let winningArray = [
 	[12, 19, 26, 33],
 	[13, 20, 27, 34],
 ];
-let currentPlayer = 1;
+let currentPlayer = 1; //changes whose turn to play
+
+document.addEventListener('DOMContentLoaded', loadDOM);
+
+//Define loadDom function which will set the game and everything:
+
+function loadDOM() {
+	createBoard();
+	player.innerHTML = currentPlayer;
+	let squares = document.querySelectorAll('.board div');
+	Array.from(squares).forEach((square) => {
+		square.addEventListener('click', clickBox);
+	});
+	playAgain.addEventListener('click', reset);
+}
+//Define creatBoard function:
+
+//Define clickBox function:
+
+//the checkWon function:
+
+//Define reset function:
