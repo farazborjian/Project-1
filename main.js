@@ -91,6 +91,18 @@ function loadDOM() {
 }
 //Define creatBoard function:
 
+function createBoard() {
+	for (let i = 0; i < 49; i++) {
+		let div = document.createElement('div');
+		div.setAttribute('data-id', i);
+		div.className = 'square';
+		if (i >= 42) {
+			div.className = 'taken';
+		}
+		board.appendChild(div);
+	}
+}
+
 //Define clickBox function:
 
 //the checkWon function:
