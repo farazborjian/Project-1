@@ -102,9 +102,49 @@ function createBoard() {
 		board.appendChild(div);
 	}
 }
-
 //Define clickBox function:
 
+function clickBox() {
+	let squares = document.querySelectorAll('.board div');
+	let click = parseInt(this.dataset.id);
+	if (
+		squares[click + 7].classList.contains('taken') &&
+		!squares[click].classList.contains('taken')
+	) {
+		if (currentPlayer === 1) {
+			currentPlayer = 2;
+			player.innerHTML = currentPlayer;
+			this.className = 'player-one taken';
+			checkWon();
+		} else if (currentPlayer === 2) {
+			currentPlayer = 1;
+			player.innerHTML = currentPlayer;
+			this.className = 'player-two taken';
+			checkWon();
+		}
+	} else {
+		alert(
+			'You cannot build on an empty space or on a space that has been built on'
+		);
+	}
+}
+
 //the checkWon function:
+
+function checkWon() {
+	let squares = document.querySelectorAll('.board div');
+	for (let y = 0; y < winningArray.length; y++) {
+		let square = winningArray[y];
+		if (square.every((q) => squares[q].classList.contains('player-one'))) {
+			setTimeout(() => alert('player one(red) wins '), 200);
+			setTimeout(() => (restart.style.display = 'flex'), 500);
+		} else if (
+			square.every((q) => squares[q].classList.contains('player-two'))
+		) {
+			setTimeout(() => alert('player two(yellow) wins'), 200);
+			setTimeout(() => (restart.style.display = 'flex'), 500);
+		}
+	}
+}
 
 //Define reset function:
