@@ -1,7 +1,10 @@
+//cache the elements:
+
 let board = document.querySelector('.board');
 let player = document.querySelector('.player');
 let playAgain = document.querySelector('.playAgain');
 let restart = document.querySelector('.restart');
+
 let box = 0; //check if the board is filled
 let winningArray = [
 	[0, 1, 2, 3],
@@ -148,3 +151,9 @@ function checkWon() {
 }
 
 //Define reset function:
+
+function reset() {
+	board.innerHTML = '';
+	loadDOM();
+	restart.style.display = 'none';
+}
